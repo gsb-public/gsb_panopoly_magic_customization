@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_module_implements_alter()
+ */
+function gsb_panopoly_magic_customization_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_alter') {
+    $group = $implementations['gsb_panopoly_magic_customization'];
+    unset($implementations['gsb_panopoly_magic_customization']);
+    $implementations['gsb_panopoly_magic_customization'] = $group;
+  }
+}
+
+function gsb_panopoly_magic_customization_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'fieldable_panels_panes_fieldable_panels_pane_content_type_edit_form') {
+    if (isset($form['buttons']['cancel']['#access'])) {
+      unset($form['buttons']['cancel']['#access']);
+      $form['buttons']['#weight'] = 1000;
+    }
+  }
+}

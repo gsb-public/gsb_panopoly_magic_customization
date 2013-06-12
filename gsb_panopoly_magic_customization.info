@@ -1,0 +1,7 @@
+name = GSB Panopoly Magic Customization
+description = "To get around some not so magic panopoly magic."
+core = 7.x
+package = GSB
+version = 7.x-1.0
+project = gsb_panopoly_magic_customization
+dependencies[] = gsb_fpp_customization
