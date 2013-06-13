@@ -24,6 +24,8 @@ function gsb_panopoly_magic_customization_form_alter(&$form, &$form_state, $form
       $form_id == 'views_content_views_panes_content_type_edit_form') {
     if (isset($form['buttons']['cancel']['#access'])) {
       unset($form['buttons']['cancel']['#access']);
+      $form['buttons']['cancel']['#attributes']['class'][] = 'gsb-panopoly-magic-customization-cancel-button';
+      $form['buttons']['cancel']['#attributes']['class'][] = 'js-hide';
       $form['buttons']['#weight'] = 1000;
     }
   }
