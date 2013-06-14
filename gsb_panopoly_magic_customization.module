@@ -19,14 +19,25 @@ function gsb_panopoly_magic_customization_module_implements_alter(&$implementati
  * 
  */
 function gsb_panopoly_magic_customization_form_alter(&$form, &$form_state, $form_id) {
+
   if ($form_id == 'fieldable_panels_panes_fieldable_panels_pane_content_type_edit_form' ||
       $form_id == 'ctools_block_content_type_edit_form' ||
       $form_id == 'views_content_views_panes_content_type_edit_form') {
+
     if (isset($form['buttons']['cancel']['#access'])) {
       unset($form['buttons']['cancel']['#access']);
       $form['buttons']['cancel']['#attributes']['class'][] = 'gsb-panopoly-magic-customization-cancel-button';
       $form['buttons']['cancel']['#attributes']['class'][] = 'js-hide';
       $form['buttons']['#weight'] = 1000;
     }
+    
+    if (isset($form['widget_settings']['reusable'])) {
+      $form['widget_settings']['reusable']['admin_title']['#field_prefix'] = 'Element Title';
+      //$form['widget_settings']['reusable']['admin_title']['#required'] = TRUE;
+      $form['widget_settings']['reusable']['admin_description']['#title'] = 'Element Description';
+    }
+
   }
+  
 }
+
