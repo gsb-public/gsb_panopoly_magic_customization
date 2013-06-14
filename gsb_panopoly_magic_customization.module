@@ -32,12 +32,11 @@ function gsb_panopoly_magic_customization_form_alter(&$form, &$form_state, $form
     }
     
     if (isset($form['widget_settings']['reusable'])) {
-      $form['widget_settings']['reusable']['admin_title']['#field_prefix'] = 'Element Title';
-      //$form['widget_settings']['reusable']['admin_title']['#required'] = TRUE;
+      $faux_required_label = '<label for="edit-reusable">Element Title <span class="form-required" title="This field is required.">*</span></label>';
+      $form['widget_settings']['reusable']['admin_title']['#field_prefix'] = $faux_required_label;
       $form['widget_settings']['reusable']['admin_description']['#title'] = 'Element Description';
     }
 
   }
   
 }
-
